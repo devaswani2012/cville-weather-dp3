@@ -17,7 +17,7 @@ https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/
 ### 1. Root Resource
 
 ```bash
-curl https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/
+https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/
 ```
 
 Returns project metadata and the available API resources.
@@ -25,7 +25,7 @@ Returns project metadata and the available API resources.
 ### 2. Current Weather
 
 ```bash
-curl https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/current
+https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/current
 ```
 
 Returns the most recent weather observation stored in DynamoDB.
@@ -33,7 +33,7 @@ Returns the most recent weather observation stored in DynamoDB.
 ### 3. Weather History
 
 ```bash
-curl "https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/history?limit=5"
+"https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/history?limit=5"
 ```
 
 Returns recent timestamped weather observations. The `limit` parameter controls how many records are returned.
@@ -41,7 +41,7 @@ Returns recent timestamped weather observations. The `limit` parameter controls 
 ### 4. Weather Statistics
 
 ```bash
-curl https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/stats
+https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/stats
 ```
 
 Returns summary statistics for recent records, including temperature, humidity, and wind speed.
@@ -49,7 +49,7 @@ Returns summary statistics for recent records, including temperature, humidity, 
 ### 5. Public Plot
 
 ```bash
-curl https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/plot
+https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/plot
 ```
 
 Returns the public S3 URL for the latest generated weather trend plot.
@@ -169,64 +169,6 @@ rate(1 hour)
 ```
 
 This allows the project to continuously collect new weather records over time.
-
-## Local Development
-
-### Run the ingestion script locally
-
-From the project root:
-
-```bash
-export TABLE_NAME=cville-weather
-export BUCKET_NAME=cville-weather-plots-devaswani
-export PLOT_KEY=dp3/cville-weather/latest.svg
-
-python ingestion/lambda_function.py
-```
-
-### Run the API locally
-
-```bash
-cd api/cville-weather-api
-chalice local
-```
-
-Then test local endpoints:
-
-```bash
-curl http://127.0.0.1:8000/
-curl http://127.0.0.1:8000/current
-curl "http://127.0.0.1:8000/history?limit=5"
-curl http://127.0.0.1:8000/plot
-curl http://127.0.0.1:8000/stats
-```
-
-## Deployment
-
-### Deploy the API
-
-From the Chalice app directory:
-
-```bash
-cd api/cville-weather-api
-chalice deploy
-```
-
-The deployed API is available at:
-
-```text
-https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/
-```
-
-### Test the deployed API
-
-```bash
-curl https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/
-curl https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/current
-curl "https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/history?limit=5"
-curl https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/plot
-curl https://0g7w2898b3.execute-api.us-east-1.amazonaws.com/api/stats
-```
 
 ## Project Structure
 
