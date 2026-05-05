@@ -1,0 +1,15 @@
+{
+  "version": "2.0",
+  "app_name": "cville-weather-api",
+  "stages": {
+    "dev": {
+      "api_gateway_stage": "api",
+      "environment_variables": {
+        "TABLE_NAME": "cville-weather",
+        "BUCKET_NAME": "cville-weather-plots-devaswani",
+        "PLOT_KEY": "dp3/cville-weather/latest.svg"
+      },
+      "autogen_policy": false
+    }
+  }
+}
